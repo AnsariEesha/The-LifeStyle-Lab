@@ -7,3 +7,4 @@ Work-life balance is valued more than health benefits which makes sense because 
 5. Stress and anxiety
 
 ‘The lifestyle lab’ is a smart solution to this problem. This website allow users to take a test and assess their work-life balance and will help them evaluate their routine. 
+To run the project use the app.py file
