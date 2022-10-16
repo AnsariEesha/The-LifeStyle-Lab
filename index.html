@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>LifeStyle Analysis</title>
+  
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+  <div class="text-center">  
+  <div class="container">
+    <h1>LifeStyle Analysis</h1>
+
+    <br>
+    <br>
+       <!-- Main Input For Receiving Query to our ML -->
+      <form action="{{ url_for('predict')}}"method="post">
+
+
+      <div class="mx-0 mx-sm-auto">
+
+
+        <div class="form-group">
+          <p>
+            HOW MANY FRUITS OR VEGETABLES DO YOU EAT EVERYDAY?
+        
+          </p>
+        
+        
+            <div class="text-center mb-3">
+              <div class="d-inline mx-3">
+                None
+              </div>
+        
+            <div class="form-check form-check-inline">
+               <input class="form-check-input" type="radio" name="inlineRadioOptionsq1" id="inlineRadio0q1"
+              value="0" />
+              <label class="form-check-label" for="inlineRadio0q1">0</label>
+             </div>
+            <div class="form-check form-check-inline">
+             <input class="form-check-input" type="radio" name="inlineRadioOptionsq1" id="inlineRadio1q1"
+              value="1" />
+             <label class="form-check-label" for="inlineRadio1q1">1</label>
+            </div>
+        
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="inlineRadioOptionsq1" id="inlineRadio2q1"
+              value="2" />
+              <label class="form-check-label" for="inlineRadio2q1">2</label>
+           </div>
+        
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptionsq1" id="inlineRadio3q1"
+              value="3" />
+            <label class="form-check-label" for="inlineRadio3q1">3</label>
+          </div>
+        
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptionsq1" id="inlineRadio4q1"
+              value="4" />
+            <label class="form-check-label" for="inlineRadio4q1">4</label>
+          </div>
+        
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptionsq1" id="inlineRadio5q1"
+              value="5" />
+            <label class="form-check-label" for="inlineRadio5q1">5</label>
+          </div>
+        
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptionsq1" id="inlineRadio6q1"
+              value="6" />
+            <label class="form-check-label" for="inlineRadio6q1">6</label>
+        
+          </div>
+        
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptionsq1" id="inlineRadio7q1"
+              value="7" />
+            <label class="form-check-label" for="inlineRadio7q1">7</label>
+        
+          </div>
+        
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptionsq1" id="inlineRadio8q1"
+              value="8" />
+            <label class="form-check-label" for="inlineRadio8q1">8</label>
+        
+          </div>
+        
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptionsq1" id="inlineRadio9q1"
+              value="9" />
+            <label class="form-check-label" for="inlineRadio9q1">9</label>
+        
+          </div>
+        
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptionsq1" id="inlineRadio10q1"
+              value="10" />
+            <label class="form-check-label" for="inlineRadio10q1">10</label>
+        
+          </div>
+        
+          <div class="d-inline me-4">
+            Servings per day
+          </div>
+        
+        </div>
+        </div>
+
+
+       <div class="form-group">
+          <p>
+            HOW MUCH STRESS DO YOU TYPICALLY EXPERIENCE EVERYDAY?
+          </p>
+       
+      
+            <div class="text-center mb-3">
+              <div class="d-inline mx-3">
+                Not much stress
+              </div>
+      
+            <div class="form-check form-check-inline">
+               <input class="form-check-input" type="radio" name="inlineRadioOptionsq2" id="inlineRadio0q2"
+              value="0" />
+              <label class="form-check-label" for="inlineRadio0q2">0</label>
+             </div>
+            <div class="form-check form-check-inline">
+             <input class="form-check-input" type="radio" name="inlineRadioOptionsq2" id="inlineRadio1q2"
+              value="1" />
+             <label class="form-check-label" for="inlineRadio1q2">1</label>
+            </div>
+      
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="inlineRadioOptionsq2" id="inlineRadio2q2"
+              value="2" />
+              <label class="form-check-label" for="inlineRadio2q2">2</label>
+           </div>
+      
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptionsq2" id="inlineRadio3q2"
+              value="3" />
+            <label class="form-check-label" for="inlineRadio3q2">3</label>
+          </div>
+      
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptionsq2" id="inlineRadio4q2"
+              value="4" />
+            <label class="form-check-label" for="inlineRadio4q2">4</label>
+          </div>
+      
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptionsq2" id="inlineRadio5q2"
+              value="5" />
+            <label class="form-check-label" for="inlineRadio5q2">5</label>
+          </div>
+      
+          
+    
+          <div class="d-inline me-4">
+            A lot of stress
+          </div>
+    
+      </div>
+    </div>
+
+    <div class="form-group">
+      <p>
+        HOW MANY NEW PLACES DO YOU VISIT?
+    
+      </p>
+    
+    
+        <div class="text-center mb-3">
+          <div class="d-inline mx-3">
+            None
+          </div>
+    
+        <div class="form-check form-check-inline">
+           <input class="form-check-input" type="radio" name="inlineRadioOptionsq3" id="inlineRadio0q3"
+          value="0" />
+          <label class="form-check-label" for="inlineRadio0q3">0</label>
+         </div>
+        <div class="form-check form-check-inline">
+         <input class="form-check-input" type="radio" name="inlineRadioOptionsq3" id="inlineRadio1q3"
+          value="1" />
+         <label class="form-check-label" for="inlineRadio1q3">1</label>
+        </div>
+    
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptionsq3" id="inlineRadio2q3"
+          value="2" />
+          <label class="form-check-label" for="inlineRadio2q3">2</label>
+       </div>
+    
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptionsq3" id="inlineRadio3q3"
+          value="3" />
+        <label class="form-check-label" for="inlineRadio3q3">3</label>
+      </div>
+    
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptionsq3" id="inlineRadio4q3"
+          value="4" />
+        <label class="form-check-label" for="inlineRadio4q3">4</label>
+      </div>
+    
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptionsq3" id="inlineRadio5q3"
+          value="5" />
+        <label class="form-check-label" for="inlineRadio5q3">5</label>
+      </div>
+    
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptionsq3" id="inlineRadio6q3"
+          value="6" />
+        <label class="form-check-label" for="inlineRadio6q3">6</label>
+    
+      </div>
+    
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptionsq3" id="inlineRadio7q3"
+          value="7" />
+        <label class="form-check-label" for="inlineRadio7q3">7</label>
+    
+      </div>
+    
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptionsq3" id="inlineRadio8q3"
+          value="8" />
+        <label class="form-check-label" for="inlineRadio8q3">8</label>
+    
+      </div>
+    
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptionsq3" id="inlineRadio9q3"
+          value="9" />
+        <label class="form-check-label" for="inlineRadio9q3">9</label>
+    
+      </div>
+    
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptionsq3" id="inlineRadio10q3"
+          value="10" />
+        <label class="form-check-label" for="inlineRadio10q3">10</label>
+    
+      </div>
+    
+      <div class="d-inline me-4">
+        New places (or more)
+      </div>
+    
+    </div>
+    </div>
+    
+
+    <div class="form-group">
+      <p>
+        HOW MANY PEOPLE ARE VERY CLOSE TO YOU?
+      </p>
+   
+  
+        <div class="text-center mb-3">
+          <div class="d-inline mx-3">
+            None
+          </div>
+  
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptionsq4" id="inlineRadio0q4"
+           value="0" />
+           <label class="form-check-label" for="inlineRadio0q4">0</label>
+          </div>
+         <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptionsq4" id="inlineRadio1q4"
+           value="1" />
+          <label class="form-check-label" for="inlineRadio1q4">1</label>
+         </div>
+   
+         <div class="form-check form-check-inline">
+           <input class="form-check-input" type="radio" name="inlineRadioOptionsq4" id="inlineRadio2q4"
+           value="2" />
+           <label class="form-check-label" for="inlineRadio2q4">2</label>
+        </div>
+   
+       <div class="form-check form-check-inline">
+         <input class="form-check-input" type="radio" name="inlineRadioOptionsq4" id="inlineRadio3q4"
+           value="3" />
+         <label class="form-check-label" for="inlineRadio3q4">3</label>
+       </div>
+   
+       <div class="form-check form-check-inline">
+         <input class="form-check-input" type="radio" name="inlineRadioOptionsq4" id="inlineRadio4q4"
+           value="4" />
+         <label class="form-check-label" for="inlineRadio4q4">4</label>
+       </div>
+   
+       <div class="form-check form-check-inline">
+         <input class="form-check-input" type="radio" name="inlineRadioOptionsq4" id="inlineRadio5q4"
+           value="5" />
+         <label class="form-check-label" for="inlineRadio5q4">5</label>
+       </div>
+   
+       <div class="form-check form-check-inline">
+         <input class="form-check-input" type="radio" name="inlineRadioOptionsq4" id="inlineRadio6q4"
+           value="6" />
+         <label class="form-check-label" for="inlineRadio6q4">6</label>
+   
+       </div>
+
+       <div class="form-check form-check-inline">
+         <input class="form-check-input" type="radio" name="inlineRadioOptionsq4" id="inlineRadio7q4"
+           value="7" />
+         <label class="form-check-label" for="inlineRadio7q4">7</label>
+   
+       </div>
+
+       <div class="form-check form-check-inline">
+         <input class="form-check-input" type="radio" name="inlineRadioOptionsq4" id="inlineRadio8q4"
+           value="8" />
+         <label class="form-check-label" for="inlineRadio8q4">8</label>
+   
+       </div>
+
+       <div class="form-check form-check-inline">
+         <input class="form-check-input" type="radio" name="inlineRadioOptionsq4" id="inlineRadio9q4"
+           value="9" />
+         <label class="form-check-label" for="inlineRadio9q4">9</label>
+   
+       </div>
+
+       <div class="form-check form-check-inline">
+         <input class="form-check-input" type="radio" name="inlineRadioOptionsq4" id="inlineRadio10q4"
+           value="10" />
+         <label class="form-check-label" for="inlineRadio10q4">10</label>
+   
+       </div>
+
+      <div class="d-inline me-4">
+        People or more
+      </div>
+
+  </div>
+</div>
+
+    
+
+<div class="form-group">
+  <p>
+    HOW MANY PEOPLE DO YOU HELP ACHIEVE A BETTER LIFE?
+
+
+
+  </p>
+
+
+    <div class="text-center mb-3">
+      <div class="d-inline mx-3">
+        None
+      </div>
+
+    <div class="form-check form-check-inline">
+       <input class="form-check-input" type="radio" name="inlineRadioOptionsq5" id="inlineRadio0q5"
+      value="0" />
+      <label class="form-check-label" for="inlineRadio0q5">0</label>
+     </div>
+    <div class="form-check form-check-inline">
+     <input class="form-check-input" type="radio" name="inlineRadioOptionsq5" id="inlineRadio1q5"
+      value="1" />
+     <label class="form-check-label" for="inlineRadio1q5">1</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptionsq5" id="inlineRadio2q5"
+      value="2" />
+      <label class="form-check-label" for="inlineRadio2q5">2</label>
+   </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq5" id="inlineRadio3q5"
+      value="3" />
+    <label class="form-check-label" for="inlineRadio3q5">3</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq5" id="inlineRadio4q5"
+      value="4" />
+    <label class="form-check-label" for="inlineRadio4q5">4</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq5" id="inlineRadio5q5"
+      value="5" />
+    <label class="form-check-label" for="inlineRadio5q5">5</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq5" id="inlineRadio6q5"
+      value="6" />
+    <label class="form-check-label" for="inlineRadio6q5">6</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq5" id="inlineRadio7q5"
+      value="7" />
+    <label class="form-check-label" for="inlineRadio7q5">7</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq5" id="inlineRadio8q5"
+      value="8" />
+    <label class="form-check-label" for="inlineRadio8q5">8</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq5" id="inlineRadio9q5"
+      value="9" />
+    <label class="form-check-label" for="inlineRadio9q5">9</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq5" id="inlineRadio10q5"
+      value="10" />
+    <label class="form-check-label" for="inlineRadio10q5">10</label>
+
+  </div>
+
+  <div class="d-inline me-4">
+    People or more
+  </div>
+
+</div>
+</div>
+
+
+<div class="form-group">
+  <p>
+    WITH HOW MANY PEOPLE DO YOU INTERACT WITH DURING A TYPICAL DAY?
+
+
+
+  </p>
+
+
+    <div class="text-center mb-3">
+      <div class="d-inline mx-3">
+        None
+      </div>
+
+    <div class="form-check form-check-inline">
+       <input class="form-check-input" type="radio" name="inlineRadioOptionsq6" id="inlineRadio0q6"
+      value="0" />
+      <label class="form-check-label" for="inlineRadio0q6">0</label>
+     </div>
+    <div class="form-check form-check-inline">
+     <input class="form-check-input" type="radio" name="inlineRadioOptionsq6" id="inlineRadio1q6"
+      value="1" />
+     <label class="form-check-label" for="inlineRadio1q6">1</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptionsq6" id="inlineRadio2q6"
+      value="2" />
+      <label class="form-check-label" for="inlineRadio2q6">2</label>
+   </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq6" id="inlineRadio3q6"
+      value="3" />
+    <label class="form-check-label" for="inlineRadio3q6">3</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq6" id="inlineRadio4q6"
+      value="4" />
+    <label class="form-check-label" for="inlineRadio4q6">4</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq6" id="inlineRadio5q6"
+      value="5" />
+    <label class="form-check-label" for="inlineRadio5q6">5</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq6" id="inlineRadio6q6"
+      value="6" />
+    <label class="form-check-label" for="inlineRadio6q6">6</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq6" id="inlineRadio7q6"
+      value="7" />
+    <label class="form-check-label" for="inlineRadio7q6">7</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq6" id="inlineRadio8q6"
+      value="8" />
+    <label class="form-check-label" for="inlineRadio8q6">8</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq6" id="inlineRadio9q6"
+      value="9" />
+    <label class="form-check-label" for="inlineRadio9q6">9</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq6" id="inlineRadio10q6"
+      value="10" />
+    <label class="form-check-label" for="inlineRadio10q6">10</label>
+
+  </div>
+
+  <div class="d-inline me-4">
+    Persons or more
+  </div>
+
+</div>
+</div>
+
+<div class="form-group">
+  <p>
+    HOW MANY REMARKABLE ACHIEVEMENTS ARE YOU PROUD OF?
+
+
+  </p>
+
+
+    <div class="text-center mb-3">
+      <div class="d-inline mx-3">
+        None
+      </div>
+
+    <div class="form-check form-check-inline">
+       <input class="form-check-input" type="radio" name="inlineRadioOptionsq7" id="inlineRadio0q7"
+      value="0" />
+      <label class="form-check-label" for="inlineRadio0q7">0</label>
+     </div>
+    <div class="form-check form-check-inline">
+     <input class="form-check-input" type="radio" name="inlineRadioOptionsq7" id="inlineRadio1q7"
+      value="1" />
+     <label class="form-check-label" for="inlineRadio1q7">1</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptionsq7" id="inlineRadio2q7"
+      value="2" />
+      <label class="form-check-label" for="inlineRadio2q7">2</label>
+   </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq7" id="inlineRadio3q7"
+      value="3" />
+    <label class="form-check-label" for="inlineRadio3q7">3</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq7" id="inlineRadio4q7"
+      value="4" />
+    <label class="form-check-label" for="inlineRadio4q7">4</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq7" id="inlineRadio5q7"
+      value="5" />
+    <label class="form-check-label" for="inlineRadio5q7">5</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq7" id="inlineRadio6q7"
+      value="6" />
+    <label class="form-check-label" for="inlineRadio6q7">6</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq7" id="inlineRadio7q7"
+      value="7" />
+    <label class="form-check-label" for="inlineRadio7q7">7</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq7" id="inlineRadio8q7"
+      value="8" />
+    <label class="form-check-label" for="inlineRadio8q7">8</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq7" id="inlineRadio9q7"
+      value="9" />
+    <label class="form-check-label" for="inlineRadio9q7">9</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq7" id="inlineRadio10q7"
+      value="10" />
+    <label class="form-check-label" for="inlineRadio10q7">10</label>
+
+  </div>
+
+  <div class="d-inline me-4">
+    Achievements or more
+  </div>
+
+</div>
+</div>
+
+
+<div class="form-group">
+  <p>
+    HOW MANY TIMES DO YOU DONATE YOUR TIME OR MONEY TO GOOD CAUSES?
+  </p>
+
+
+    <div class="text-center mb-3">
+      <div class="d-inline mx-3">
+        None
+      </div>
+
+    <div class="form-check form-check-inline">
+       <input class="form-check-input" type="radio" name="inlineRadioOptionsq8" id="inlineRadio0q8"
+      value="0" />
+      <label class="form-check-label" for="inlineRadio0q8">0</label>
+     </div>
+    <div class="form-check form-check-inline">
+     <input class="form-check-input" type="radio" name="inlineRadioOptionsq8" id="inlineRadio1q8"
+      value="1" />
+     <label class="form-check-label" for="inlineRadio1q8">1</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptionsq8" id="inlineRadio2q8"
+      value="2" />
+      <label class="form-check-label" for="inlineRadio2q8">2</label>
+   </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq8" id="inlineRadio3q8"
+      value="3" />
+    <label class="form-check-label" for="inlineRadio3q8">3</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq8" id="inlineRadio4q8"
+      value="4" />
+    <label class="form-check-label" for="inlineRadio4q8">4</label>
+  </div>
+
+  <div class="d-inline me-4">
+    Or more
+  </div>
+
+</div>
+</div>
+
+<div class="form-group">
+  <p>
+    HOW WELL DO YOU COMPLETE YOUR WEEKLY TO-DO LISTS?
+  </p>
+
+
+    <div class="text-center mb-3">
+      <div class="d-inline mx-3">
+         Not at all
+      </div>
+
+    <div class="form-check form-check-inline">
+       <input class="form-check-input" type="radio" name="inlineRadioOptionsq9" id="inlineRadio0q9"
+      value="0" />
+      <label class="form-check-label" for="inlineRadio0q9">0</label>
+     </div>
+    <div class="form-check form-check-inline">
+     <input class="form-check-input" type="radio" name="inlineRadioOptionsq9" id="inlineRadio1q9"
+      value="1" />
+     <label class="form-check-label" for="inlineRadio1q9">1</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptionsq9" id="inlineRadio2q9"
+      value="2" />
+      <label class="form-check-label" for="inlineRadio2q9">2</label>
+   </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq9" id="inlineRadio3q9"
+      value="3" />
+    <label class="form-check-label" for="inlineRadio3q9">3</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq9" id="inlineRadio4q9"
+      value="4" />
+    <label class="form-check-label" for="inlineRadio4q9">4</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq9" id="inlineRadio5q9"
+      value="5" />
+    <label class="form-check-label" for="inlineRadio5q9">5</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq9" id="inlineRadio6q9"
+      value="6" />
+    <label class="form-check-label" for="inlineRadio6q9">6</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq9" id="inlineRadio7q9"
+      value="7" />
+    <label class="form-check-label" for="inlineRadio7q9">7</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq9" id="inlineRadio8q9"
+      value="8" />
+    <label class="form-check-label" for="inlineRadio8q9">8</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq9" id="inlineRadio9q9"
+      value="9" />
+    <label class="form-check-label" for="inlineRadio9q9">9</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq9" id="inlineRadio10q9"
+      value="10" />
+    <label class="form-check-label" for="inlineRadio10q9">10</label>
+
+  </div>
+
+  <div class="d-inline me-4">
+    Very well
+  </div>
+
+</div>
+</div>
+
+<div class="form-group">
+  <p>
+    IN A TYPICAL DAY, HOW MANY HOURS DO YOU EXPERIENCE "FLOW"?
+
+
+  </p>
+
+
+    <div class="text-center mb-3">
+      <div class="d-inline mx-3">
+        None
+      </div>
+
+    <div class="form-check form-check-inline">
+       <input class="form-check-input" type="radio" name="inlineRadioOptionsq10" id="inlineRadio0q10"
+      value="0" />
+      <label class="form-check-label" for="inlineRadio0q10">0</label>
+     </div>
+    <div class="form-check form-check-inline">
+     <input class="form-check-input" type="radio" name="inlineRadioOptionsq10" id="inlineRadio1q10"
+      value="1" />
+     <label class="form-check-label" for="inlineRadio1q10">1</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptionsq10" id="inlineRadio2q10"
+      value="2" />
+      <label class="form-check-label" for="inlineRadio2q10">2</label>
+   </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq10" id="inlineRadio3q10"
+      value="3" />
+    <label class="form-check-label" for="inlineRadio3q10">3</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq10" id="inlineRadio4q10"
+      value="4" />
+    <label class="form-check-label" for="inlineRadio4q10">4</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq10" id="inlineRadio5q10"
+      value="5" />
+    <label class="form-check-label" for="inlineRadio5q10">5</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq10" id="inlineRadio6q10"
+      value="6" />
+    <label class="form-check-label" for="inlineRadio6q10">6</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq10" id="inlineRadio7q10"
+      value="7" />
+    <label class="form-check-label" for="inlineRadio7q10">7</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq10" id="inlineRadio8q10"
+      value="8" />
+    <label class="form-check-label" for="inlineRadio8q10">8</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq10" id="inlineRadio9q10"
+      value="9" />
+    <label class="form-check-label" for="inlineRadio9q10">9</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq10" id="inlineRadio10q10"
+      value="10" />
+    <label class="form-check-label" for="inlineRadio10q10">10</label>
+
+  </div>
+
+  <div class="d-inline me-4">
+    Hours per day or more
+  </div>
+
+</div>
+</div>
+
+<div class="form-group">
+  <p>
+    HOW MANY STEPS (IN THOUSANDS) DO YOU TYPICALLY WALK EVERYDAY?
+
+  </p>
+
+
+    <div class="text-center mb-3">
+      <div class="d-inline mx-3">
+        Less than 1,000 steps
+      </div>
+
+  
+    <div class="form-check form-check-inline">
+     <input class="form-check-input" type="radio" name="inlineRadioOptionsq11" id="inlineRadio1q11"
+      value="1" />
+     <label class="form-check-label" for="inlineRadio1q11">1</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptionsq11" id="inlineRadio2q11"
+      value="2" />
+      <label class="form-check-label" for="inlineRadio2">2</label>
+   </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq11" id="inlineRadio3q11"
+      value="3" />
+    <label class="form-check-label" for="inlineRadio3q11">3</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq11" id="inlineRadio4q11"
+      value="4" />
+    <label class="form-check-label" for="inlineRadio4q11">4</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq11" id="inlineRadio5q11"
+      value="5" />
+    <label class="form-check-label" for="inlineRadio5q11">5</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq11" id="inlineRadio6q11"
+      value="6" />
+    <label class="form-check-label" for="inlineRadio6q11">6</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq11" id="inlineRadio7q11"
+      value="7" />
+    <label class="form-check-label" for="inlineRadio7q11">7</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq11" id="inlineRadio8q11"
+      value="8" />
+    <label class="form-check-label" for="inlineRadio8q11">8</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq11" id="inlineRadio9q11"
+      value="9" />
+    <label class="form-check-label" for="inlineRadio9q11">9</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq11" id="inlineRadio10sq11"
+      value="10" />
+    <label class="form-check-label" for="inlineRadio10sq11">10</label>
+
+  </div>
+
+  <div class="d-inline me-4">
+    Thousand steps
+  </div>
+
+</div>
+</div>
+
+<div class="form-group">
+  <p>
+    FOR HOW MANY YEARS AHEAD IS YOUR LIFE VISION VERY CLEAR FOR?
+
+
+  </p>
+
+
+    <div class="text-center mb-3">
+      <div class="d-inline mx-3">
+        I do not have a life vision
+      </div>
+
+    <div class="form-check form-check-inline">
+       <input class="form-check-input" type="radio" name="inlineRadioOptionsq12" id="inlineRadio0q12"
+      value="0" />
+      <label class="form-check-label" for="inlineRadio0q12">0</label>
+     </div>
+    <div class="form-check form-check-inline">
+     <input class="form-check-input" type="radio" name="inlineRadioOptionsq12" id="inlineRadio1q12"
+      value="1" />
+     <label class="form-check-label" for="inlineRadio1q12">1</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptionsq12" id="inlineRadio2q12"
+      value="2" />
+      <label class="form-check-label" for="inlineRadio2q12">2</label>
+   </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq12" id="inlineRadio3q12"
+      value="3" />
+    <label class="form-check-label" for="inlineRadio3q12">3</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq12" id="inlineRadio4q12"
+      value="4" />
+    <label class="form-check-label" for="inlineRadio4q12">4</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq12" id="inlineRadio5q12"
+      value="5" />
+    <label class="form-check-label" for="inlineRadio5q12">5</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq12" id="inlineRadio6q12"
+      value="6" />
+    <label class="form-check-label" for="inlineRadio6q12">6</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq12" id="inlineRadio7q12"
+      value="7" />
+    <label class="form-check-label" for="inlineRadio7q12">7</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq12" id="inlineRadio8q12"
+      value="8" />
+    <label class="form-check-label" for="inlineRadio8q12">8</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq12" id="inlineRadio9q12"
+      value="9" />
+    <label class="form-check-label" for="inlineRadio9q12">9</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq12" id="inlineRadio10q12"
+      value="10" />
+    <label class="form-check-label" for="inlineRadio10q12">10</label>
+
+  </div>
+
+  <div class="d-inline me-4">
+    Years or more
+  </div>
+
+</div>
+</div>
+
+<div class="form-group">
+  <p>
+    ABOUT HOW LONG DO YOU TYPICALLY SLEEP?
+
+  </p>
+
+    
+ 
+ <div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptionsq13" id="inlineRadio1q13"
+   value="1" />
+  <label class="form-check-label" for="inlineRadio1q13">1</label>
+ </div>
+
+ <div class="form-check form-check-inline">
+   <input class="form-check-input" type="radio" name="inlineRadioOptionsq13" id="inlineRadio2q13"
+   value="2" />
+   <label class="form-check-label" for="inlineRadio2q13">2</label>
+</div>
+
+<div class="form-check form-check-inline">
+ <input class="form-check-input" type="radio" name="inlineRadioOptionsq13" id="inlineRadio3q13"
+   value="3" />
+ <label class="form-check-label" for="inlineRadio3q13">3</label>
+</div>
+
+<div class="form-check form-check-inline">
+ <input class="form-check-input" type="radio" name="inlineRadioOptionsq13" id="inlineRadio4q13"
+   value="4" />
+ <label class="form-check-label" for="inlineRadio4q13">4</label>
+</div>
+
+<div class="form-check form-check-inline">
+ <input class="form-check-input" type="radio" name="inlineRadioOptionsq13" id="inlineRadio5q13"
+   value="5" />
+ <label class="form-check-label" for="inlineRadio5q13">5</label>
+</div>
+
+<div class="form-check form-check-inline">
+ <input class="form-check-input" type="radio" name="inlineRadioOptionsq13" id="inlineRadio6q13"
+   value="6" />
+ <label class="form-check-label" for="inlineRadio6q13">6</label>
+
+</div>
+
+<div class="form-check form-check-inline">
+ <input class="form-check-input" type="radio" name="inlineRadioOptionsq13" id="inlineRadio7q13"
+   value="7" />
+ <label class="form-check-label" for="inlineRadio7q13">7</label>
+
+</div>
+
+<div class="form-check form-check-inline">
+ <input class="form-check-input" type="radio" name="inlineRadioOptionsq13" id="inlineRadio8q13"
+   value="8" />
+ <label class="form-check-label" for="inlineRadio8q13">8</label>
+
+</div>
+
+<div class="form-check form-check-inline">
+ <input class="form-check-input" type="radio" name="inlineRadioOptionsq13" id="inlineRadio9q13"
+   value="9" />
+ <label class="form-check-label" for="inlineRadio9q13">9</label>
+
+</div>
+
+<div class="form-check form-check-inline">
+ <input class="form-check-input" type="radio" name="inlineRadioOptionsq13" id="inlineRadio10q13"
+   value="10" />
+ <label class="form-check-label" for="inlineRadio10q13">10</label>
+
+</div>
+
+  <div class="d-inline me-4">
+    Hours per night
+  </div>
+</div>
+</div>
+
+<div class="form-group">
+  <p>
+    HOW MANY DAYS OF VACATION DO YOU TYPICALLY LOSE EVERY YEAR ?
+
+  </p>
+
+
+    <div class="text-center mb-3">
+      <div class="d-inline mx-3">
+        None
+      </div>
+
+    <div class="form-check form-check-inline">
+       <input class="form-check-input" type="radio" name="inlineRadioOptionsq14" id="inlineRadio0q14"
+      value="0" />
+      <label class="form-check-label" for="inlineRadio0q14">0</label>
+     </div>
+    <div class="form-check form-check-inline">
+     <input class="form-check-input" type="radio" name="inlineRadioOptionsq14" id="inlineRadio1q14"
+      value="1" />
+     <label class="form-check-label" for="inlineRadio1q14">1</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptionsq14" id="inlineRadio2q14"
+      value="2" />
+      <label class="form-check-label" for="inlineRadio2q14">2</label>
+   </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq14" id="inlineRadio3q14"
+      value="3" />
+    <label class="form-check-label" for="inlineRadio3q14">3</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq14" id="inlineRadio4q14"
+      value="4" />
+    <label class="form-check-label" for="inlineRadio4q14">4</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq14" id="inlineRadio5q14"
+      value="5" />
+    <label class="form-check-label" for="inlineRadio5q14">5</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq14" id="inlineRadio6q14"
+      value="6" />
+    <label class="form-check-label" for="inlineRadio6q14">6</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq14" id="inlineRadio7q14"
+      value="7" />
+    <label class="form-check-label" for="inlineRadio7q14">7</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq14" id="inlineRadio8q14"
+      value="8" />
+    <label class="form-check-label" for="inlineRadio8q14">8</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq14" id="inlineRadio9q14"
+      value="9" />
+    <label class="form-check-label" for="inlineRadio9q14">9</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq14" id="inlineRadio10q14"
+      value="10" />
+    <label class="form-check-label" for="inlineRadio10q14">10</label>
+
+  </div>
+
+  <div class="d-inline me-4">
+    Vacation days
+  </div>
+
+</div>
+</div>
+
+<div class="form-group">
+  <p>
+    HOW OFTEN DO YOU SHOUT OR SULK AT SOMEBODY?
+
+  </p>
+
+
+    <div class="text-center mb-3">
+      <div class="d-inline mx-3">
+        Never
+      </div>
+
+    <div class="form-check form-check-inline">
+       <input class="form-check-input" type="radio" name="inlineRadioOptionsq15" id="inlineRadio0q15"
+      value="0" />
+      <label class="form-check-label" for="inlineRadio0q15">0</label>
+     </div>
+    <div class="form-check form-check-inline">
+     <input class="form-check-input" type="radio" name="inlineRadioOptionsq15" id="inlineRadio1q15"
+      value="1" />
+     <label class="form-check-label" for="inlineRadio1q15">1</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptionsq15" id="inlineRadio2q15"
+      value="2" />
+      <label class="form-check-label" for="inlineRadio2q15">2</label>
+   </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq15" id="inlineRadio3q15"
+      value="3" />
+    <label class="form-check-label" for="inlineRadio3q15">3</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq15" id="inlineRadio4q15"
+      value="4" />
+    <label class="form-check-label" for="inlineRadio4q15">4</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq15" id="inlineRadio5q15"
+      value="5" />
+    <label class="form-check-label" for="inlineRadio5q15">5</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq15" id="inlineRadio6q15"
+      value="6" />
+    <label class="form-check-label" for="inlineRadio6q15">6</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq15" id="inlineRadio7q15"
+      value="7" />
+    <label class="form-check-label" for="inlineRadio7q15">7</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq15" id="inlineRadio8q15"
+      value="8" />
+    <label class="form-check-label" for="inlineRadio8q15">8</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq15" id="inlineRadio9q15"
+      value="9" />
+    <label class="form-check-label" for="inlineRadio9q15">9</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq15" id="inlineRadio10q15"
+      value="10" />
+    <label class="form-check-label" for="inlineRadio10q15">10</label>
+
+  </div>
+
+  <div class="d-inline me-4">
+    Times per week, or more
+  </div>
+
+</div>
+</div>
+
+<div class="form-group">
+  <p>
+    HOW SUFFICIENT IS YOUR INCOME TO COVER BASIC LIFE EXPENSES?
+
+  </p>
+
+
+    <div class="text-center mb-3">
+      <div class="d-inline mx-3">
+        Not or hardly sufficient
+      </div>
+
+    <div class="form-check form-check-inline">
+       <input class="form-check-input" type="radio" name="inlineRadioOptionsq16" id="inlineRadio0q16"
+      value="0" />
+      <label class="form-check-label" for="inlineRadio0q16">0</label>
+     </div>
+    <div class="form-check form-check-inline">
+     <input class="form-check-input" type="radio" name="inlineRadioOptionsq16" id="inlineRadio1q16"
+      value="1" />
+     <label class="form-check-label" for="inlineRadio1q16">1</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptionsq16" id="inlineRadio2q16"
+      value="2" />
+      <label class="form-check-label" for="inlineRadio2q16">2</label>
+   </div>
+
+  
+
+  <div class="d-inline me-4">
+    Sufficient
+  </div>
+
+</div>
+</div>
+
+<div class="form-group">
+  <p>
+    HOW MANY RECOGNITIONS HAVE YOU RECEIVED IN YOUR LIFE?
+
+
+  </p>
+
+
+    <div class="text-center mb-3">
+      <div class="d-inline mx-3">
+        None
+      </div>
+
+    <div class="form-check form-check-inline">
+       <input class="form-check-input" type="radio" name="inlineRadioOptionq17" id="inlineRadio0q17"
+      value="0" />
+      <label class="form-check-label" for="inlineRadio0q17">0</label>
+     </div>
+    <div class="form-check form-check-inline">
+     <input class="form-check-input" type="radio" name="inlineRadioOptionsq17" id="inlineRadio1q17"
+      value="1" />
+     <label class="form-check-label" for="inlineRadio1q17">1</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptionsq17" id="inlineRadio2q17"
+      value="2" />
+      <label class="form-check-label" for="inlineRadio2q17">2</label>
+   </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq17" id="inlineRadio3q17"
+      value="3" />
+    <label class="form-check-label" for="inlineRadio3q17">3</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq17" id="inlineRadio4q17"
+      value="4" />
+    <label class="form-check-label" for="inlineRadio4q17">4</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq17" id="inlineRadio5q17"
+      value="5" />
+    <label class="form-check-label" for="inlineRadio5q17">5</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq17" id="inlineRadio6q17"
+      value="6" />
+    <label class="form-check-label" for="inlineRadio6q17">6</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq17" id="inlineRadio7q17"
+      value="7" />
+    <label class="form-check-label" for="inlineRadio7q17">7</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq17" id="inlineRadio8q17"
+      value="8" />
+    <label class="form-check-label" for="inlineRadio8q17">8</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq17" id="inlineRadio9q17"
+      value="9" />
+    <label class="form-check-label" for="inlineRadio9q17">9</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq17" id="inlineRadio10q17"
+      value="10" />
+    <label class="form-check-label" for="inlineRadio10q17">10</label>
+
+  </div>
+
+  <div class="d-inline me-4">
+    Recognitions or more
+  </div>
+
+</div>
+</div>
+
+<div class="form-group">
+  <p>
+    HOW MANY HOURS DO YOU SPEND EVERYDAY DOING WHAT YOU ARE PASSIONATE ABOUT?
+
+  </p>
+
+
+    <div class="text-center mb-3">
+      <div class="d-inline mx-3">
+        None
+      </div>
+
+    <div class="form-check form-check-inline">
+       <input class="form-check-input" type="radio" name="inlineRadioOptionsq18" id="inlineRadio0q18"
+      value="0" />
+      <label class="form-check-label" for="inlineRadio0q18">0</label>
+     </div>
+    <div class="form-check form-check-inline">
+     <input class="form-check-input" type="radio" name="inlineRadioOptionsq18" id="inlineRadio1q18"
+      value="1" />
+     <label class="form-check-label" for="inlineRadio1q18">1</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptionsq18" id="inlineRadio2q18"
+      value="2" />
+      <label class="form-check-label" for="inlineRadio2q18">2</label>
+   </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq18" id="inlineRadio3q18"
+      value="3" />
+    <label class="form-check-label" for="inlineRadio3q18">3</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq18" id="inlineRadio4q18"
+      value="4" />
+    <label class="form-check-label" for="inlineRadio4q18">4</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq18" id="inlineRadio5q18"
+      value="5" />
+    <label class="form-check-label" for="inlineRadio5q18">5</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq18" id="inlineRadio6q18"
+      value="6" />
+    <label class="form-check-label" for="inlineRadio6q18">6</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq18" id="inlineRadio7q18"
+      value="7" />
+    <label class="form-check-label" for="inlineRadio7q18">7</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq18" id="inlineRadio8q18"
+      value="8" />
+    <label class="form-check-label" for="inlineRadio8q18">8</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq18" id="inlineRadio9q18"
+      value="9" />
+    <label class="form-check-label" for="inlineRadio9q18">9</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq18" id="inlineRadio10q18"
+      value="10" />
+    <label class="form-check-label" for="inlineRadio10q18">10</label>
+
+  </div>
+
+  <div class="d-inline me-4">
+    Hours
+  </div>
+
+</div>
+</div>
+
+<div class="form-group">
+  <p>
+    IN A TYPICAL WEEK, HOW MANY TIMES DO YOU HAVE THE OPPORTUNITY TO THINK ABOUT YOURSELF?
+
+  </p>
+
+
+    <div class="text-center mb-3">
+      <div class="d-inline mx-3">
+        None
+      </div>
+
+    <div class="form-check form-check-inline">
+       <input class="form-check-input" type="radio" name="inlineRadioOptionsq19" id="inlineRadio0q19"
+      value="0" />
+      <label class="form-check-label" for="inlineRadio0q19">0</label>
+     </div>
+    <div class="form-check form-check-inline">
+     <input class="form-check-input" type="radio" name="inlineRadioOptionsq19" id="inlineRadio1q19"
+      value="1" />
+     <label class="form-check-label" for="inlineRadio1q19">1</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptionsq19" id="inlineRadio2q19"
+      value="2" />
+      <label class="form-check-label" for="inlineRadio2q19">2</label>
+   </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq19" id="inlineRadio3q19"
+      value="3" />
+    <label class="form-check-label" for="inlineRadio3q19">3</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq19" id="inlineRadio4q19"
+      value="4" />
+    <label class="form-check-label" for="inlineRadio4q19">4</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq19" id="inlineRadio5q19"
+      value="5" />
+    <label class="form-check-label" for="inlineRadio5q19">5</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq19" id="inlineRadio6q19"
+      value="6" />
+    <label class="form-check-label" for="inlineRadio6q19">6</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq19" id="inlineRadio7q19"
+      value="7" />
+    <label class="form-check-label" for="inlineRadio7q19">7</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq19" id="inlineRadio8q19"
+      value="8" />
+    <label class="form-check-label" for="inlineRadio8q19">8</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq19" id="inlineRadio9q19"
+      value="9" />
+    <label class="form-check-label" for="inlineRadio9q19">9</label>
+
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptionsq19" id="inlineRadio10q19"
+      value="10" />
+    <label class="form-check-label" for="inlineRadio10q19">10</label>
+
+  </div>
+
+  <div class="d-inline me-4">
+    Times per week or more often
+  </div>
+
+</div>
+</div>
+
+
+<div class="form-group">
+  <p>
+    YOUR AGE RANGE
+
+  </p>
+  <div class="form-check mb-2">
+    <input class="form-check-input" type="radio" name="exampleFormq20" id="radio2Example1q20" value="0"/>
+    <label class="form-check-label" for="radio2Example1q20">
+      Less than 20
+    </label>
+  </div>
+
+  <div class="form-check mb-2">
+    <input class="form-check-input" type="radio" name="exampleFormq20" id="radio2Example2q20" value="1"/>
+    <label class="form-check-label" for="radio2Example2q20">
+      21 to 35
+    </label>
+  </div>
+
+  <div class="form-check mb-2">
+    <input class="form-check-input" type="radio" name="exampleFormq20" id="radio2Example3q20" value="2"/>
+    <label class="form-check-label" for="radio2Example3q20">
+      36 to 50
+    </label>
+  </div>
+
+  <div class="form-check mb-2">
+    <input class="form-check-input" type="radio" name="exampleFormq20" id="radio2Example4q20" value="3"/>
+    <label class="form-check-label" for="radio2Example4q20">
+      51 or more
+    </label>
+  </div>
+
+</div>
+
+<div class="form-group">
+  <p>
+    YOUR GENDER
+
+  </p>
+  <div class="form-check mb-2">
+    <input class="form-check-input" type="radio" name="exampleFormq21" id="radio2Example1q21" value="0"/>
+    <label class="form-check-label" for="radio2Example1q21">
+     Male
+    </label>
+  </div>
+
+  <div class="form-check mb-2">
+    <input class="form-check-input" type="radio" name="exampleFormq21" id="radio2Example2q21" value="1"/>
+    <label class="form-check-label" for="radio2Example2q21">
+      Female
+    </label>
+  </div>
+</div>
+
+
+
+          <div class="text-end">
+            <button type="submit" class="btn">Submit</button>
+          </div>
+        </div>
+        
+          
+         
+      </form>
+  
+     <br>
+
+     {{ prediction_text }}
+  
+  
+    </div>
+  </div>
+
+  
+</body>
+</html>
