@@ -8,4 +8,5 @@ Work-life balance is valued more than health benefits which makes sense because 
 
 ‘The lifestyle lab’ is a smart solution to this problem. This website allow users to take a test and assess their work-life balance and will help them evaluate their routine. 
 The backend of the project is completed but the frontend is in need of some work. Any addition to the project is welcome from your side either in improving the backend or adding features to the frontend.
-To run this project use the app.py file
+To further understand the project working see the video with file name project demonstration.
+To run this project use the app.py file.
